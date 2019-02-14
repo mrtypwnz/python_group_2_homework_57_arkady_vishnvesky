@@ -1,0 +1,25 @@
+.Alert {
+    width: 40%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    left: 30%;
+    top: 5%;
+    position: fixed;
+    transform: translate(0, -100vh);
+    opacity: 0;
+    z-index: 1000;
+}
+
+.Alert-Show {
+    transform: translateY(-30%);
+    opacity: 1;
+}
+
+.warning {
+    background-color: #dc3545;
+}
+
+.success {
+    background-color: #4CAF50;
+}

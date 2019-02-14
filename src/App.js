@@ -1,28 +1,65 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import Modal from './components/Modal/Modal';
+import Button from './components/Button/Button'
+import Alert from './components/Alert/Alert'
 class App extends Component {
-  render() {
+    constructor(props) {
+        super(props);
+
+
+        this.state = {
+            Modal: false,
+            Alert: true,
+        };
+    }
+
+    showModal = () => {
+        this.setState({Modal: true});
+    };
+
+    closeModal = () => {
+        this.setState({Modal: false});
+    };
+
+    showAlert = () => {
+        this.setState({Alert: true})
+    };
+
+    closeAlert = () => {
+        this.setState({Alert: false})
+    };
+
+    exampleAlert = () => {
+        alert("Продолжить_тест")
+    }
+
+
+    render() {
+
+    let buttons = [{type: 'primary', label: 'Продолжить', clicked: this.exampleAlert},
+                {type: 'danger', label: 'Закрыть', clicked: this.closeModal}];
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div>
+            <Button clicked ={this.showModal}/>
+            <Modal
+                show={this.state.showModal}
+                title="example text"
+                close={this.closeModal}
+                buttons={buttons}
+            />
+
+            <Alert
+                type="primary"
+                show={this.state.showAlert}
+                close={this.closeAlert}
+                ><p className="Alert-Text">some alert text</p>
+            </Alert>
+        </div>
+
     );
-  }
+    }
 }
 
 export default App;
